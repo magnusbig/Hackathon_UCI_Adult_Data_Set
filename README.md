@@ -10,11 +10,14 @@ Predict if a person's income is in excess of $50,000 given certain profile infor
 
 ## Data Sources 
 
-The data used for this project was compiled using the PushShift API: 
-    [PushShift](https://pushshift.io/api-parameters/)
+The primary dataset come from University of California Irvine and contains almost 50,000 observations of people from 1996 and whether or not they made above $50k: 
+    [UCI Dataset](https://archive.ics.uci.edu/ml/datasets/Adult)
 
-10,000 most recent post were collected from r/woodworking, r/mtb, and r/bicylcing and the title and selftext (i.e. original post) columns were concatenated into a single 'text' column that was used for our analysis.
-
+Additional Data was collected to correlate native country to per-capita GDP, sources below:
+    [World Bank Data](https://www.kaggle.com/sdorius/globses)
+    Puerto Rico](https://www.google.com/publicdata/exploreds=d5bncppjof8f9_&met_y=ny_gdp_pcap_cd&idim=country:PRI:CUB:DOM&hl=en&dl=en)
+    [Taiwan](https://www.indexmundi.com/g/g.aspx?c=tw&v=67)
+    
 ## Repo Structure
 
 code
@@ -34,17 +37,15 @@ visuals
 
 //TBU//
 
-| **Vectorizer**    | **Estimator**             | **Test Accuracy** | **Test Sensitivity** | **Test Specificity** |
+| **Model**    | **Non-Standard Hyperparemeter(s)**     | **Test Accuracy** | **Test F1 Score** | **Test Sensitivity** |
 |-------------------|---------------------------|-------------------|----------------------|----------------------|
-| *CountVectorizer* | *Logistic Regression*     | 0.921             | 0.919                | 0.922                |
-| *CountVectorizer* | *KNN*                     | 0.820             | 0.847                | 0.794                |
-| *CountVectorizer* | *Multinomial Naive Bayes* | 0.914             | 0.925                | 0.903                |
-| *CountVectorizer* | *Random Forest*           | 0.917             | 0.932                | 0.903                |
-| *TfidfVectorizer* | *Logistic Regression*     | 0.919             | 0.917                | 0.920                |
-| *TfidfVectorizer* | *KNN*                     | 0.737             | 0.787                | 0.686                |
-| *TfidfVectorizer* | *Gaussian Naive Bayes*    | 0.737             | 0.999                | 0.475                |
-| *TfidfVectorizer* | *Random Forest*           | 0.918             | 0.930                | 0.906                |
-| *CountVectorizer* | *Voting (LR, MNB, RF)*    | 0.923             | 0.922                | 0.923                |
+| **Bagged Decision Trees** | *n_estimators = 250*      | 0.816             | 0.600             |  0.574          |
+| **K-Nearest Neighbors** | *n_neighbors = 25*          |                   |                   |                 |
+| **Logistic Regression** | *Standard*                  |                   |                   |                 |
+| **Random Forest** | *max_depth = 11, min_samples_leaf = 5, warm_start = True* |  0.847 | 0.635 | 0.552          |
+| **AdaBoost** | *n_estimators = 50*                    | 0.847             | 0.646             |  0.581          |
+| **Voting** | *Bagged Trees, Random Forest, AdaBoost*  | 0.847             | 0.639             |  0.562          |
+| **Voting** | *KNN, Random Forest, AdaBoost*           | 0.847             | 0.635             |  0.551          |
 
 **Production Model**
 
