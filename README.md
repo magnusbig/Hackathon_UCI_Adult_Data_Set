@@ -49,8 +49,8 @@ Using the results from these simple models we decided to ignore the decision tre
 | **Model**    | **Non-Standard Hyperparemeter(s)**     | **Test Accuracy** | **Test F1 Score** | **Test Sensitivity** |
 |-------------------|---------------------------|-------------------|----------------------|----------------------|
 | **Bagged Decision Trees** | *n_estimators = 250*      | 0.816             | 0.600             |  0.574          |
-| **K-Nearest Neighbors** | *n_neighbors = 25*          |                   |                   |                 |
-| **Logistic Regression** | *Standard*                  |                   |                   |                 |
+| **K-Nearest Neighbors** | *n_neighbors = 25*          | 0.837             | 0.635             |  0.589          |
+| **Logistic Regression** | *Standard*                  | 0.841             |                   |                 |
 | **Random Forest** | *max_depth = 11, min_samples_leaf = 5, warm_start = True* |  0.847 | 0.635 | 0.552          |
 | **AdaBoost** | *n_estimators = 50*                    | 0.847             | 0.646             |  0.581          |
 | **Voting** | *Bagged Trees, Random Forest, AdaBoost*  | 0.847             | 0.639             |  0.562          |
