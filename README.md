@@ -15,7 +15,7 @@ The primary dataset come from University of California Irvine and contains almos
 
 Additional Data was collected to correlate native country to per-capita GDP, sources below:
     [World Bank Data](https://www.kaggle.com/sdorius/globses)
-    Puerto Rico](https://www.google.com/publicdata/exploreds=d5bncppjof8f9_&met_y=ny_gdp_pcap_cd&idim=country:PRI:CUB:DOM&hl=en&dl=en)
+    [Puerto Rico](https://www.google.com/publicdata/exploreds=d5bncppjof8f9_&met_y=ny_gdp_pcap_cd&idim=country:PRI:CUB:DOM&hl=en&dl=en)
     [Taiwan](https://www.indexmundi.com/g/g.aspx?c=tw&v=67)
     
 ## Repo Structure
@@ -35,7 +35,16 @@ visuals
 
 **Model Performance**
 
-//TBU//
+We first fit 7 different types of classification models using the sklearn standard hyperparameters:
+- Logistic Regression
+- K-Nearest Neighbors
+- Decision Tree
+- Bagged Decision Trees
+- Random Forest
+- AdaBoost
+- Support Vector Machine
+
+Using the results from these simple models we decided to ignore the decision tree and support vector machine models as they performed much worse than the other 5 models. We then performed grid searches on the remaining 5 model types in order to tune hyperparameters and find the best model. Further we attempted 2 voting classifiers combining some of our best model and hyparameters. The results of our *best* model of each type are sumarized below:
 
 | **Model**    | **Non-Standard Hyperparemeter(s)**     | **Test Accuracy** | **Test F1 Score** | **Test Sensitivity** |
 |-------------------|---------------------------|-------------------|----------------------|----------------------|
@@ -48,7 +57,9 @@ visuals
 | **Voting** | *KNN, Random Forest, AdaBoost*           | 0.847             | 0.635             |  0.551          |
 
 **Production Model**
+We chose our K-Nearest Neighbors model with 25 neighbors as our production model. While this model did not have the highest accuracy or F1 score, it was comparable to the other top models and had the additional bonus of scoring the highest on sensitivity. Given our imbalanced dataset we wanted to have a higher sensitivy as none of our models were great at classifying the positive cases.
 
+Having decided on a production model we fit the model again in a new notebook and loaded our test data before generating predictions.
 
 ## Conclusions
 
