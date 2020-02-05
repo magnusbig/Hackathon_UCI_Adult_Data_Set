@@ -13,21 +13,24 @@ Predict if a person's income is in excess of $50,000 given certain profile infor
 The primary dataset come from University of California Irvine and contains almost 50,000 observations of people from 1996 and whether or not they made above $50k: 
     [UCI Dataset](https://archive.ics.uci.edu/ml/datasets/Adult)
 
-Additional Data was collected to correlate native country to per-capita GDP, sources below:
-    [World Bank Data](https://www.kaggle.com/sdorius/globses)
-    [Puerto Rico](https://www.google.com/publicdata/exploreds=d5bncppjof8f9_&met_y=ny_gdp_pcap_cd&idim=country:PRI:CUB:DOM&hl=en&dl=en)
+Additional Data was collected to correlate native country to per-capita GDP, sources below:<br>
+    [World Bank Data](https://www.kaggle.com/sdorius/globses)<br>
+    [Puerto Rico](https://www.google.com/publicdata/exploreds=d5bncppjof8f9_&met_y=ny_gdp_pcap_cd&idim=country:PRI:CUB:DOM&hl=en&dl=en)<br>
     [Taiwan](https://www.indexmundi.com/g/g.aspx?c=tw&v=67)
     
 ## Repo Structure
 
 code
-- Folder jupyter notebooks for data collection & EDA, modelling and testing the model on our second set of subreddit's
+- project_4_EDA_jw.ipynb : EDA & feature engineering on half of features
+- EDA_cleaning_2.ipynb : EDA & feature engineering on half of features
+- Concatenating_clean_train_test_csvs.ipynb : Merging datasets post EDA
+- Simple_classification_model_comparison.ipynb : Comparison of performance of sklearn standard classification models
+- project_4_Modeling_jw.ipynb : Tuning of Logistic Regression & KNN models
+- Bagged_trees_random_forest_adaboost_voting_models.ipynb : Tuning of tree, boosting and voting models
+- project_4_Test_Modeling_jw.ipynb : Implementation of production model and generating predictions
 
 data
-- Folder with csv's from web scrapping
-
-visuals
-- Folder with pictures for presentation and choice visuals from analysis
+- Folder with original data as well as cleaned and engineered csv's
 
 ## Executive Summary
 
@@ -46,7 +49,7 @@ We first fit 7 different types of classification models using the sklearn standa
 - AdaBoost
 - Support Vector Machine
 
-Using the results from these simple models we decided to ignore the decision tree and support vector machine models as they performed much worse than the other 5 models. We then performed grid searches on the remaining 5 model types in order to tune hyperparameters and find the best model. Further we attempted 2 voting classifiers combining some of our best model and hyparameters. The results of our *best* model of each type are sumarized below:
+Using the results from these simple models we decided to ignore the decision tree and support vector machine models as they performed much worse than the other 5 models. We then performed grid searches on the remaining 5 model types in order to tune hyperparameters and find the best model. We ran a function to test all possible combinations of features on a logistic regression, but unfortunately were unable to run similar feature testing with on other models within the time constraint. Further we attempted 2 voting classifiers combining some of our best model and hyparameters. The results of our *best* model of each type are sumarized below:
 
 | **Model**    | **Non-Standard Hyperparemeter(s)**     | **Test Accuracy** | **Test F1 Score** | **Test Sensitivity** |
 |-------------------|---------------------------|-------------------|----------------------|----------------------|
