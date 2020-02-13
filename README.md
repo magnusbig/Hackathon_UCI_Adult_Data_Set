@@ -21,13 +21,7 @@ Additional Data was collected to correlate native country to per-capita GDP, sou
 ## Repo Structure
 
 code
-- project_4_EDA_jw.ipynb : EDA & feature engineering on half of features
-- EDA_cleaning_2.ipynb : EDA & feature engineering on half of features
-- Concatenating_clean_train_test_csvs.ipynb : Merging datasets post EDA
-- Simple_classification_model_comparison.ipynb : Comparison of performance of sklearn standard classification models
-- project_4_Modeling_jw.ipynb : Tuning of Logistic Regression & KNN models
-- Bagged_trees_random_forest_adaboost_voting_models.ipynb : Tuning of tree, boosting and voting models
-- project_4_Test_Modeling_jw.ipynb : Implementation of production model and generating predictions
+- Folder with jupyter notebooks containing EDA, cleaning, feature engineering and modeling
 
 data
 - Folder with original data as well as cleaned and engineered csv's
